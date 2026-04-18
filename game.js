@@ -193,9 +193,9 @@ window.addEventListener('touchend', (e) => {
 });
 
 function drawPlayer() {
-    const acceleration = 0.6;
+    const acceleration = 1.2;
     const maxSpeed = 16;
-    const friction = 0.85; // makes him slide to a stop smoothly
+    const friction = 0.7; // makes him slide to a stop smoothly
 
     if(keys.ArrowLeft || keys.A) {
         player.dx -= acceleration;
