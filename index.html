@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Dragon Ball: Sky Rush</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="game-container">
+        <div id="ui-layer">
+            <div class="score-container">
+                <span>Score: </span><span id="score-val">0</span>
+            </div>
+            <div class="lives-container" id="lives-container">
+                <!-- Hearts will be injected here -->
+            </div>
+        </div>
+        <div id="start-screen" class="overlay">
+            <h1>Dragon Ball: Sky Rush</h1>
+            <p>Tap left/right or use Arrow Keys to move Goku</p>
+            <p>Catch Dragon Balls (+100) | Avoid Lightning (-1 Heart)</p>
+            <button id="start-btn">Start Game</button>
+        </div>
+        <div id="game-over-screen" class="overlay hidden">
+            <h1>Game Over</h1>
+            <p>Final Score: <span id="final-score">0</span></p>
+            <button id="restart-btn">Play Again</button>
+        </div>
+        <canvas id="gameCanvas" width="800" height="600"></canvas>
+    </div>
+    <script src="game.js"></script>
+</body>
+</html>
