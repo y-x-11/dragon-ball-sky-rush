@@ -193,19 +193,34 @@ window.addEventListener('touchend', (e) => {
 });
 
 function drawPlayer() {
+    const acceleration = 0.6;
+    const maxSpeed = 16;
+    const friction = 0.85; // makes him slide to a stop smoothly
+
     if(keys.ArrowLeft || keys.A) {
-        player.dx = -player.speed;
+        player.dx -= acceleration;
     } else if(keys.ArrowRight || keys.D) {
-        player.dx = player.speed;
+        player.dx += acceleration;
     } else {
-        player.dx = 0;
+        // apply friction when no key is held
+        player.dx *= friction;
     }
+
+    // Cap the maximum speed
+    if(player.dx > maxSpeed) player.dx = maxSpeed;
+    if(player.dx < -maxSpeed) player.dx = -maxSpeed;
 
     player.x += player.dx;
 
     // Boundaries
-    if(player.x < 0) player.x = 0;
-    if(player.x + player.width > canvas.width) player.x = canvas.width - player.width;
+    if(player.x < 0) {
+        player.x = 0;
+        player.dx = 0; // stop momentum if hit edge
+    }
+    if(player.x + player.width > canvas.width) {
+        player.x = canvas.width - player.width;
+        player.dx = 0; // stop momentum if hit edge
+    }
 
     ctx.drawImage(assets.goku, player.x, player.y, player.width, player.height);
 }
